@@ -27,7 +27,7 @@ public class HttpClientUtil {
 	
 	private static int TIMEOUT = 10000;
 	
-	public String getHtmlResponse(String baseUrl, String suffixUrl, Map<String, String> params) {
+	public static String getHtmlResponse(String baseUrl, String suffixUrl, Map<String, String> params) {
 		StringBuilder res = new StringBuilder();
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		CloseableHttpResponse response = null;
@@ -53,7 +53,7 @@ public class HttpClientUtil {
 		return res.toString();
 	}
 	
-	public String getHtmlResponse(String url) {
+	public static String getHtmlResponse(String url) {
 	    StringBuilder res = new StringBuilder();
 	    HttpURLConnection conn = null;
         InputStream in = null;
@@ -82,7 +82,7 @@ public class HttpClientUtil {
         return res.toString();
 	}
 	
-	public HttpGet getHttpGet(String baseUrl, String suffixUrl, Map<String, String> params) {
+	public static HttpGet getHttpGet(String baseUrl, String suffixUrl, Map<String, String> params) {
 		String param = "";
 		for (String key : params.keySet()) {
 			param += key + "=" + params.get(key) + "&";
@@ -107,7 +107,7 @@ public class HttpClientUtil {
 		return httpGet;
 	}
 	
-	public HttpGet getHttpGet(String url) {
+	public static HttpGet getHttpGet(String url) {
 	    //LOG.info("url:" + url);
         RequestConfig defaultRequestConfig = RequestConfig.custom()
                 .setCookieSpec(CookieSpecs.DEFAULT)
@@ -126,7 +126,7 @@ public class HttpClientUtil {
         return httpGet;
     }
 
-	public void close(InputStream in, CloseableHttpResponse response, CloseableHttpClient httpclient) {
+	public static void close(InputStream in, CloseableHttpResponse response, CloseableHttpClient httpclient) {
 	    if (null != in) {
             try {
                 in.close();
@@ -150,7 +150,7 @@ public class HttpClientUtil {
         }    
 	}
 	
-	public void close(InputStream in, HttpURLConnection conn) {
+	public static void close(InputStream in, HttpURLConnection conn) {
         if (null != in) {
             try {
                 in.close();
@@ -181,13 +181,11 @@ public class HttpClientUtil {
 		params.put("sr", "1-2");
 		params.put("keywords", "iphone+6s+plus+tempered+glass");
 		
-		HttpClientUtil client = new HttpClientUtil();
-//		client.getHtmlResponse(host, url, params);
+//		HttpClientUtil.getHtmlResponse(host, url, params);
 		
-		client = new HttpClientUtil();
 		url = "https://www.amazon.com/gp/pdp/profile/AWJKQAC0XO5NI/ref=cm_cr_arp_d_pdp?ie=UTF8";
 
-		System.out.println(client.getHtmlResponse(url));
+		System.out.println(HttpClientUtil.getHtmlResponse(url));
 	}
 
 }
