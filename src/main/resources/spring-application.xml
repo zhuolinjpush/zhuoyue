@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd"
+       default-lazy-init="false">
+     
+     <!-- 引入属性文件 -->
+    <context:property-placeholder location="classpath:system.properties,classpath:jdbc.properties" ignore-unresolvable="true"/>
+    
+      <!-- 自动扫描push包 ,将带有注解的类 纳入spring容器管理 -->
+    <context:component-scan base-package="cn.jpush" name-generator="cn.jpush.commons.utils.beans.SpringAnnotationBeanNameGenerator">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <bean id="springContextUtil" class="cn.jpush.commons.utils.SpringContextUtil"/>
+    
+    <!-- 配置数据源 -->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="0" />
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="100" />
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="0" />
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="10000" />
+
+        <property name="filters" value="stat,wall,log4j" />
+        <property name="timeBetweenEvictionRunsMillis" value="3000" />
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <property name="validationQuery" value="SELECT 'x'" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+        <property name="poolPreparedStatements" value="true" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+    </bean>
+    
+    
+    <bean id="dataSourceStats" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${stats.jdbc.url}" />
+        <property name="username" value="${stats.jdbc.username}" />
+        <property name="password" value="${stats.jdbc.password}" />
+    </bean>
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!--<property name="configLocation" value="classpath:mybatis-config.xml" />-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml" />
+    </bean>
+    
+    <bean id="developerMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.jpush.developerdb.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+    
+    <!-- stat配置 -->
+    <bean id="sqlSessionFactoryStats" class="org.mybatis.spring.SqlSessionFactoryBean" name="sqlSessionFactoryStats">
+        <property name="dataSource" ref="dataSourceStats" />
+         <property name="mapperLocations" value="classpath:mapper_stat/*.xml" />
+    </bean>
+    
+    <bean id="statMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.jpush.statsdao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryStats"/>
+    </bean>
+    
+    <!-- Transaction manager for a single JDBC DataSource -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- Spring Session + Redis -->
+    <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration"/>
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="port" value="${springsession.redis.port}" />
+        <property name="hostName" value="${springsession.redis.host}" />
+    </bean>
+
+
+    <cache:annotation-driven cache-manager="cacheManager"/>
+    <!-- Spring 与 ehcache -->
+    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation"  value="classpath:ehcache.xml" ></property>
+    </bean>
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcacheManager" ></property>
+    </bean>
+    
+    <!--<import resource="spring-customer.xml"/>-->
+    <!--<import resource="spring-dao.xml"/> -->
+    
+     <import resource="spring-quartz.xml"/>
+
+    <!--appms 里的资源文件 -->
+    <import resource="spring-mq.xml"/>
+    <import resource="im-mq.xml"/>
+    
+</beans>
