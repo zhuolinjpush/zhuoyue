@@ -1,36 +1,41 @@
 package net.zhuoyue.vo;
 
+import java.io.Serializable;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class SKU {
-    
-    private static Logger LOG = LogManager.getLogger(SKU.class.getName());
-    
-    private String id;
+
+public class Sku implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private static Logger logger = LogManager.getLogger(Sku.class.getName());
+	
+    private String skuid;
     private String mainurl;
     private String allreviewurl;
     private String reviewtext;
     private int reviewscount;
     
-    public SKU(String id, String mainurl, String allreviewurl,
+    public Sku(String skuid, String mainurl, String allreviewurl,
             String reviewtext, int reviewscount) {
-        this.id = id;
+        this.skuid = skuid;
         this.mainurl = mainurl;
         this.allreviewurl = allreviewurl;
         this.reviewtext = reviewtext;
         this.reviewscount = reviewscount;
     }
 
-    public String getId() {
-        return id;
-    }
+    public String getSkuid() {
+		return skuid;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setSkuid(String skuid) {
+		this.skuid = skuid;
+	}
 
-    public String getMainurl() {
+	public String getMainurl() {
         return mainurl;
     }
 
@@ -62,7 +67,7 @@ public class SKU {
         this.reviewscount = reviewscount;
     }
     
-    public void printInfo() {
-        LOG.info(String.format("%s\t%s\t%s\t%s\t%s", id, mainurl, allreviewurl, reviewtext, reviewscount));
-    }
+    public void printstr() {
+		logger.info(String.format("%s\t%s\t%s", this.skuid, this.mainurl, this.reviewscount));
+	}
 }

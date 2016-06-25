@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+ 	<named-config name="statsdb">
+  	<property name="user">zhuoroot</property>
+  	<property name="password">qhzyroot</property>
+  	<property name="driverClass">com.mysql.jdbc.Driver</property>
+  	<property name="jdbcUrl">jdbc:mysql://localhost:3306/statsdb?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false</property>
+  	<property name="initialPoolSize">1</property>
+  	<property name="maxIdleTime">30</property>
+  	<property name="maxPoolSize">5</property>
+  	<property name="minPoolSize">1</property>
+ </named-config>
+</c3p0-config>

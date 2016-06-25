@@ -1,140 +1,105 @@
 package net.zhuoyue.vo;
 
+import java.io.Serializable;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Reviewer {
+
+public class Reviewer implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private static Logger logger = LogManager.getLogger(Reviewer.class.getName());
     
-    private static Logger LOG = LogManager.getLogger(Reviewer.class.getName());
-    
-    private String star;
-    private double formatstar;
+    private String reviewerid;
     private String username;
-    private String title;
-    private String content;
-    private String reviewtime;
-    private String formattime;
+    private String votestext;
+    private int votesnum;
+    private String rankingtext;
+    private int rankingnum;
+    private String recentreview;
     private String refurl;
-    private String helpfulvotes;
-    private int formatvotes;
-    private String ranking;
-    private long formatranking;
     
-    public Reviewer(String star, double formatstar, String username, String title, String content,
-            String reviewtime, String formattime, String refurl,
-            String helpfulvotes, int formatvotes, String ranking, long formatranking) {
-        this.star = star;
-        this.formatstar = formatstar;
-        this.username = username;
-        this.title = title;
-        this.content = content;
-        this.reviewtime = reviewtime;
-        this.formattime = formattime;
-        this.refurl = refurl;
-        this.helpfulvotes = helpfulvotes;
-        this.formatvotes = formatvotes;
-        this.ranking = ranking;
-        this.formatranking = formatranking;
-    }
-    
-    public int getFormatvotes() {
-        return formatvotes;
-    }
+	public Reviewer(String reviewerid, String username, String votestext,
+			int votesnum, String rankingtext, int rankingnum,
+			String recentreview, String refurl) {
+		this.reviewerid = reviewerid;
+		this.username = username;
+		this.votestext = votestext;
+		this.votesnum = votesnum;
+		this.rankingtext = rankingtext;
+		this.rankingnum = rankingnum;
+		this.recentreview = recentreview;
+		this.refurl = refurl;
+	}
 
-    public void setFormatvotes(int formatvotes) {
-        this.formatvotes = formatvotes;
-    }
+	public String getReviewerid() {
+		return reviewerid;
+	}
 
-    public String getStar() {
-        return star;
-    }
+	public void setReviewerid(String reviewerid) {
+		this.reviewerid = reviewerid;
+	}
 
-    public void setStar(String star) {
-        this.star = star;
-    }
-    
-    public double getFormatstar() {
-        return formatstar;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setFormatstar(double formatstar) {
-        this.formatstar = formatstar;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getVotestext() {
+		return votestext;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setVotestext(String votestext) {
+		this.votestext = votestext;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public int getVotesnum() {
+		return votesnum;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setVotesnum(int votesnum) {
+		this.votesnum = votesnum;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public String getRankingtext() {
+		return rankingtext;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public void setRankingtext(String rankingtext) {
+		this.rankingtext = rankingtext;
+	}
 
-    public String getReviewtime() {
-        return reviewtime;
-    }
+	public int getRankingnum() {
+		return rankingnum;
+	}
 
-    public void setReviewtime(String reviewtime) {
-        this.reviewtime = reviewtime;
-    }
+	public void setRankingnum(int rankingnum) {
+		this.rankingnum = rankingnum;
+	}
 
-    public String getFormattime() {
-        return formattime;
-    }
+	public String getRecentreview() {
+		return recentreview;
+	}
 
-    public void setFormattime(String formattime) {
-        this.formattime = formattime;
-    }
+	public void setRecentreview(String recentreview) {
+		this.recentreview = recentreview;
+	}
 
-    public String getRefurl() {
-        return refurl;
-    }
+	public String getRefurl() {
+		return refurl;
+	}
 
-    public void setRefurl(String refurl) {
-        this.refurl = refurl;
-    }
+	public void setRefurl(String refurl) {
+		this.refurl = refurl;
+	}
 
-    public String getHelpfulvotes() {
-        return helpfulvotes;
-    }
-
-    public void setHelpfulvotes(String helpfulvotes) {
-        this.helpfulvotes = helpfulvotes;
-    }
-
-    public String getRanking() {
-        return ranking;
-    }
-
-    public void setRanking(String ranking) {
-        this.ranking = ranking;
-    }
-
-    public long getFormatranking() {
-        return formatranking;
-    }
-
-    public void setFormatranking(long formatranking) {
-        this.formatranking = formatranking;
-    }
-
-    public void printInfo() {
-        LOG.info(String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", star, formatstar, username, title, content, reviewtime, formattime, refurl, helpfulvotes, formatvotes, ranking, formatranking));
-    }
-
+	public void printstr() {
+		logger.info(String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", this.reviewerid, this.username, this.votestext,
+				this.votestext, this.rankingtext, this.rankingnum, this.recentreview, this.refurl));
+	}
 }

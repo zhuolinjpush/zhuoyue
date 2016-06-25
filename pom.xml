@@ -4,7 +4,7 @@
 
   <groupId>net.zhuoyue</groupId>
   <artifactId>zhuoyue</artifactId>
-  <version>1.0</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
 
   <name>zhuoyue</name>
@@ -21,6 +21,7 @@
     <poi.version>3.8</poi.version>
     <junit.version>3.8.1</junit.version>
     <c3p0.version>0.9.5-pre4</c3p0.version>
+    <mchange.version>0.2.6.1</mchange.version>
     <mysql.version>5.1.26</mysql.version>
     <maven.version>2.3.2</maven.version>
   </properties>
@@ -67,6 +68,11 @@
         <artifactId>c3p0</artifactId>
         <version>${c3p0.version}</version>
     </dependency>
+    <dependency>
+	    <groupId>com.mchange</groupId>
+	    <artifactId>mchange-commons-java</artifactId>
+	    <version>${mchange.version}</version>
+	</dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>

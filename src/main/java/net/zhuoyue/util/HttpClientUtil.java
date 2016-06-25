@@ -64,6 +64,7 @@ public class HttpClientUtil {
             conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
             conn.setConnectTimeout(TIMEOUT);
             conn.setRequestMethod("GET");
+            conn.setDoOutput(true);
             int code = conn.getResponseCode();
             //LOG.info("code=" + code);
             if (200 == code) {
