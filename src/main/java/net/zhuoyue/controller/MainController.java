@@ -1,18 +1,34 @@
 package net.zhuoyue.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/stat")
+@RequestMapping("/")
 public class MainController {
 	
-	@RequestMapping(value="/hello", method=RequestMethod.GET)
-	public String hello(ModelMap model) {
-		model.addAttribute("message", "Spring 3 MVC Hello World");  
-        return "hello";
+	@RequestMapping("/")
+	public String index() {
+        return "index";
 	}
 
+	@RequestMapping("/company")
+    public String company() {
+        return "company";
+    }
+	
+	@RequestMapping("/product")
+    public String product() {
+        return "product";
+    }
+	
+	@RequestMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+	
+	@RequestMapping("/stats")
+    public String stats() {
+        return "stats/index";
+    }
 }
