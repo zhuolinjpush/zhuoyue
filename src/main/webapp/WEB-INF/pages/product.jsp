@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -24,9 +25,9 @@
 	<meta name="twitter:card" content="" />
 
   	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  	<link rel="shortcut icon" href="favicon.ico">
+  	<link rel="shortcut icon" href="/favicon.ico">
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="css/themify-icons.css">
+	<link rel="stylesheet" href="/css/themify-icons.css">
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<!-- Owl Carousel -->
@@ -52,31 +53,28 @@
 
 	</head>
 	<body>
-
-		<!-- START #fh5co-header -->
+<!-- START #fh5co-header -->
 		<header id="fh5co-header-section" role="header" class="" >
 			<div class="container">
 
-				
-
 				<!-- <div id="fh5co-menu-logo"> -->
 					<!-- START #fh5co-logo -->
-					<h1 id="fh5co-logo" class="pull-left"><a href="index.html"><img src="images/logo2.png" alt="Slant Free HTML5 Template"></a></h1>
+					<h1 id="fh5co-logo" class="pull-left"><a href="index"><img src="images/logo2.png" alt="Slant Free HTML5 Template"></a></h1>
 					
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active">
-								<a href="index.html">Home</a>
+								<a href="index.jsp">Home</a>
 							</li>
 							<li>
 								<a href="#" class="fh5co-sub-ddown">Information</a>
 								 <ul class="fh5co-sub-menu">
-								 	<li><a href="company.html">Company</a></li>
-								 	<li><a href="product.html">Product</a></li>
+								 	<li><a href="company">Company</a></li>
+								 	<li><a href="product">Product</a></li>
 								</ul>
 							</li>
-							<li><a href="contact.html">Contact us</a></li>
+							<li><a href="contact">Contact us</a></li>
 						</ul>
 					</nav>
 				<!-- </div> -->

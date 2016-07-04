@@ -1,8 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +31,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -99,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/user3-128x128.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">芗总</span>
+              <span class="hidden-xs">AAA</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -107,8 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Sama - 老板
-                  <small>最后一次登录时间或其他</small>
+                  AAAA
+                  <small>BBBB</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -116,10 +110,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">个人信息</a>
+                  <a href="#" class="btn btn-default btn-flat">AAAA</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">登出</a>
+                  <a href="#" class="btn btn-default btn-flat">AAAA</a>
                 </div>
               </li>
             </ul>
@@ -142,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>芗总</p>
+          <p>TTTT</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -153,17 +147,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li class="header"><b>Main Navigation</b></li>
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>主要指标</span> <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-dashboard"></i> <span>AAA</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> 指标1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>指标2</a></li>
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>AAAA</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i>AAAA</a></li>
           </ul>
         </li>
         
         
-        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>文档说明</span></a></li>
-        <li class="header">其他事件</li>
+        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>BBBB</span></a></li>
+        <li class="header">GGGGG</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
@@ -188,93 +182,100 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <!-- Main content -->
     <section class="content">
-      <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>SKU 数量</p>
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Hover Data Table</h3>
             </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Other browsers</td>
+                  <td>All others</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>U</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <!-- /.box-body -->
           </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
+          <!-- /.box -->
 
-              <p>Reviewer数量</p>
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
             </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Trident</td>
+                  <td>Internet
+                    Explorer 4.0
+                  </td>
+                  <td>Win 95+</td>
+                  <td> 4</td>
+                  <td>X</td>
+                </tr>
+                <tr>
+                  <td>Other browsers</td>
+                  <td>All others</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>U</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <!-- /.box-body -->
           </div>
+          <!-- /.box -->
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>有邮箱的比例</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>平均评论次数</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
+        <!-- /.col -->
       </div>
       <!-- /.row -->
-      <!-- Main row -->
-      <div class="row">
-        <!-- Left col -->
-        <section class="col-lg-12 connectedSortable">
-          <!-- Custom tabs (Charts with tabs)-->
-          <div class="nav-tabs-custom">
-            <!-- Tabs within a box -->
-            <ul class="nav nav-tabs pull-right">
-              <li class="active"><a href="#revenue-chart" data-toggle="tab">趋势曲线</a></li>
-              <li class="pull-left header"><i class="fa fa-inbox"></i> SKU数量趋势</li>
-            </ul>
-            <div class="tab-content no-padding">
-              <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-            </div>
-          </div>
-          <!-- /.nav-tabs-custom -->
-        </section>
-        <!-- /.Left col -->
-
-      </div>
-      <!-- /.row (main row) -->
-
     </section>
     <!-- /.content -->
     
@@ -352,9 +353,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- SlimScroll -->
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
 
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
-  $(function () {
+$(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,
@@ -365,6 +369,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       "autoWidth": false
     });
   });
+  $.widget.bridge('uibutton', $.ui.button);
+  
 </script>
 </body>
 </html>

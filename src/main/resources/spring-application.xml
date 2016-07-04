@@ -13,5 +13,17 @@
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    <mvc:annotation-driven/>
     <mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>  
+    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**"/>
+    <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/sass/" mapping="/sass/**"/>
+	<mvc:resources location="/WEB-INF/favicon.ico" mapping="/favicon.ico"/>
+	
+	<mvc:resources location="/WEB-INF/bootstrap/" mapping="/bootstrap/**"/>
+	<mvc:resources location="/WEB-INF/build/" mapping="/build/**"/>
+	<mvc:resources location="/WEB-INF/dist/" mapping="/dist/**"/>
+	<mvc:resources location="/WEB-INF/plugins/" mapping="/plugins/**"/>
+
 </beans>

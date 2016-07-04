@@ -5,9 +5,7 @@ import java.io.Serializable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class SkuReviewer implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+public class SkuReviewer {
 
 	private static Logger logger = LogManager.getLogger(SkuReviewer.class.getName());
 	

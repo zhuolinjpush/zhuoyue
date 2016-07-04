@@ -25,28 +25,28 @@
 	<meta name="twitter:card" content="" />
 
   	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  	<link rel="shortcut icon" href="../favicon.ico">
+  	<link rel="shortcut icon" href="favicon.ico">
 
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="../css/themify-icons.css">
+	<link rel="stylesheet" href="css/themify-icons.css">
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="../css/owl.carousel.min.css">
-	<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="../css/magnific-popup.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
 	<!-- Superfish -->
-	<link rel="stylesheet" href="../css/superfish.css">
+	<link rel="stylesheet" href="css/superfish.css">
 	<!-- Easy Responsive Tabs -->
-	<link rel="stylesheet" href="../css/easy-responsive-tabs.css">
+	<link rel="stylesheet" href="css/easy-responsive-tabs.css">
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="css/animate.css">
 	<!-- Theme Style -->
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="../js/modernizr-2.6.2.min.js"></script>
+	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -54,28 +54,32 @@
 
 	</head>
 	<body>
+		<!-- START #fh5co-header -->
 		<header id="fh5co-header-section" role="header" class="" >
 			<div class="container">
+
 				<!-- <div id="fh5co-menu-logo"> -->
 					<!-- START #fh5co-logo -->
-					<h1 id="fh5co-logo" class="pull-left"><a href="index.html"><img src="../images/logo2.png" alt="Zoyare"></a></h1>
+					<h1 id="fh5co-logo" class="pull-left"><a href="index"><img src="images/logo2.png" alt="Slant Free HTML5 Template"></a></h1>
 					
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active">
-								<a href="index.html">Home</a>
+								<a href="index">Home</a>
 							</li>
 							<li>
 								<a href="#" class="fh5co-sub-ddown">Information</a>
 								 <ul class="fh5co-sub-menu">
-								 	<li><a href="company.html">Company</a></li>
-								 	<li><a href="product.html">Product</a></li>
+								 	<li><a href="company">Company</a></li>
+								 	<li><a href="product">Product</a></li>
 								</ul>
 							</li>
-							<li><a href="contact.html">Contact us</a></li>
+							<li><a href="contact">Contact us</a></li>
 						</ul>
 					</nav>
+				<!-- </div> -->
+
 			</div>
 		</header>
 		
@@ -165,12 +169,12 @@
 						<div class="fh5co-spacer fh5co-spacer-sm"></div>
 					</div>
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box">
-						<figure><a href="#"><img class="img-responsive" src="../images/work_1.jpg" alt="Free HTML5 Template"></a></figure>
+						<figure><a href="#"><img class="img-responsive" src="images/work_1.jpg" alt="Free HTML5 Template"></a></figure>
 						<p class="fh5co-category">可以放置产品或其他</p>
 						<h3 class="heading">主题</h3>
 					</div>
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box"> 
-						<figure><a href="#"><img class="img-responsive" src="../images/work_2.jpg" alt="Free HTML5 Template"></a></figure>
+						<figure><a href="#"><img class="img-responsive" src="images/work_2.jpg" alt="Free HTML5 Template"></a></figure>
 						<p class="fh5co-category">可以放置产品或其他</p>
 						<h3 class="heading">主题</h3>
 					</div>
@@ -178,7 +182,7 @@
 					<div class="clearfix visible-sm-block visible-xs-block"></div>
 
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box"> 
-						<figure><a href="#"><img class="img-responsive" src="../images/work_3.jpg" alt="Free HTML5 Template"></a></figure>
+						<figure><a href="#"><img class="img-responsive" src="images/work_3.jpg" alt="Free HTML5 Template"></a></figure>
 						<p class="fh5co-category">Web Design, Identity, Packaging </p>
 						<h3 class="heading">主题</h3>
 					</div>
@@ -186,7 +190,7 @@
 					<div class="clearfix visible-md-block visible-lg-block"></div>
 
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box">
-						<figure><a href="#"><img class="img-responsive" src="../images/work_4.jpg" alt="Free HTML5 Template"></a></figure>
+						<figure><a href="#"><img class="img-responsive" src="images/work_4.jpg" alt="Free HTML5 Template"></a></figure>
 						<p class="fh5co-category">Web Design, Identity, Packaging </p>
 						<h3 class="heading">主题</h3>
 					</div>
@@ -194,12 +198,12 @@
 					<div class="clearfix visible-sm-block visible-xs-block"></div>
 
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box"> 
-						<figure><a href="#"><img class="img-responsive" src="../images/work_5.jpg" alt="Free HTML5 Template"></a></figure>
+						<figure><a href="#"><img class="img-responsive" src="images/work_5.jpg" alt="Free HTML5 Template"></a></figure>
 						<p class="fh5co-category">Web Design, Identity, Packaging </p>
 						<h3 class="heading">主题</h3>
 					</div>
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box"> 
-						<figure><a href="#"><img class="img-responsive" src="../images/work_6.jpg" alt="Free HTML5 Template"></a></figure>
+						<figure><a href="#"><img class="img-responsive" src="images/work_6.jpg" alt="Free HTML5 Template"></a></figure>
 						<p class="fh5co-category">Web Design, Identity, Packaging </p>
 						<h3 class="heading">主题</h3>
 					</div>
@@ -284,28 +288,28 @@
 			
 			
 		<!-- jQuery -->
-		<script src="../js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->
-		<script src="../js/jquery.easing.1.3.js"></script>
+		<script src="js/jquery.easing.1.3.js"></script>
 		<!-- Bootstrap -->
-		<script src="../js/bootstrap.js"></script>
+		<script src="js/bootstrap.js"></script>
 		<!-- Owl carousel -->
-		<script src="../js/owl.carousel.min.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
 		<!-- Magnific Popup -->
-		<script src="../js/jquery.magnific-popup.min.js"></script>
+		<script src="js/jquery.magnific-popup.min.js"></script>
 		<!-- Superfish -->
-		<script src="../js/hoverIntent.js"></script>
-		<script src="../js/superfish.js"></script>
+		<script src="js/hoverIntent.js"></script>
+		<script src="js/superfish.js"></script>
 		<!-- Easy Responsive Tabs -->
-		<script src="../js/easyResponsiveTabs.js"></script>
+		<script src="js/easyResponsiveTabs.js"></script>
 		<!-- FastClick for Mobile/Tablets -->
-		<script src="../js/fastclick.js"></script>
+		<script src="js/fastclick.js"></script>
 		<!-- Parallax -->
-		<script src="../js/jquery.parallax-scroll.min.js"></script>
+		<script src="js/jquery.parallax-scroll.min.js"></script>
 		<!-- Waypoints -->
-		<script src="../js/jquery.waypoints.min.js"></script>
+		<script src="js/jquery.waypoints.min.js"></script>
 		<!-- Main JS -->
-		<script src="../js/main.js"></script>
+		<script src="js/main.js"></script>
 
 	</body>
 </html>

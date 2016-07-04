@@ -11,6 +11,11 @@ public class MainController {
 	public String index() {
         return "index";
 	}
+	
+	@RequestMapping("/index")
+	public String indexjsp() {
+        return "index";
+	}
 
 	@RequestMapping("/company")
     public String company() {
@@ -29,6 +34,6 @@ public class MainController {
 	
 	@RequestMapping("/stats")
     public String stats() {
-        return "stats/index";
+        return "statindex";
     }
 }

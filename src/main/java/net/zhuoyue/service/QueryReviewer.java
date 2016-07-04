@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 
 public class QueryReviewer {
 
-    private static Logger logger = LogManager.getLogger(QueryReviewer.class.getName());
+    private static Logger logger = LogManager.getLogger(QueryReviewer.class);
     public static int ACCESS_REVIEWPAGE_SLEEP = 2000;//ms
     
     public static void queryOneSKURReviews(String mainurl) {
