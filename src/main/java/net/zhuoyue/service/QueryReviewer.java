@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.zhuoyue.dao.DaoHelper;
 import net.zhuoyue.util.ExcelUtil;
 import net.zhuoyue.util.HtmlParserUtil;
 import net.zhuoyue.vo.Reviewer;
@@ -40,9 +39,9 @@ public class QueryReviewer {
             	r.printstr();
             }
             //save 
-            DaoHelper.saveSku(sku);
-            DaoHelper.saveReviewer(reviewers);
-            DaoHelper.saveSkuReviewer(skuRevs);
+//            DaoHelper.saveSku(sku);
+//            DaoHelper.saveReviewer(reviewers);
+//            DaoHelper.saveSkuReviewer(skuRevs);
         } catch (Exception e) {
         	logger.error("query one sku reviews error", e);
         }

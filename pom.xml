@@ -26,6 +26,8 @@
     <mchange.version>0.2.6.1</mchange.version>
     <mysql.version>5.1.26</mysql.version>
     <maven.version>2.3.2</maven.version>
+    <dbcp.version>1.4</dbcp.version>
+    <servlet.version>3.1.0</servlet.version>
   </properties>
 
   <dependencies>
@@ -66,9 +68,19 @@
         <version>${mysql.version}</version>
     </dependency>
     <dependency>
+	    <groupId>commons-dbcp</groupId>
+	    <artifactId>commons-dbcp</artifactId>
+	    <version>${dbcp.version}</version>
+	</dependency>
+    <dependency>
         <groupId>com.mchange</groupId>
         <artifactId>c3p0</artifactId>
         <version>${c3p0.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${servlet.version}</version>
     </dependency>
     <dependency>
 	    <groupId>com.mchange</groupId>
