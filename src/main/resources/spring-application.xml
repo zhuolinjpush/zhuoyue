@@ -44,10 +44,21 @@
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
     <mvc:resources location="/WEB-INF/sass/" mapping="/sass/**"/>
 	<mvc:resources location="/WEB-INF/favicon.ico" mapping="/favicon.ico"/>
-	
 	<mvc:resources location="/WEB-INF/bootstrap/" mapping="/bootstrap/**"/>
 	<mvc:resources location="/WEB-INF/build/" mapping="/build/**"/>
 	<mvc:resources location="/WEB-INF/dist/" mapping="/dist/**"/>
 	<mvc:resources location="/WEB-INF/plugins/" mapping="/plugins/**"/>
+	
+	<mvc:resources location="/WEB-INF/images/" mapping="/stats/images/**"/>  
+    <mvc:resources location="/WEB-INF/css/" mapping="/stats/css/**"/>
+    <mvc:resources location="/WEB-INF/fonts/" mapping="/stats/fonts/**"/>
+    <mvc:resources location="/WEB-INF/js/" mapping="/stats/js/**"/>
+    <mvc:resources location="/WEB-INF/sass/" mapping="/stats/sass/**"/>
+    <mvc:resources location="/WEB-INF/favicon.ico" mapping="/stats/favicon.ico"/>
+    
+    <mvc:resources location="/WEB-INF/bootstrap/" mapping="/stats/bootstrap/**"/>
+    <mvc:resources location="/WEB-INF/build/" mapping="/stats/build/**"/>
+    <mvc:resources location="/WEB-INF/dist/" mapping="/stats/dist/**"/>
+    <mvc:resources location="/WEB-INF/plugins/" mapping="/stats/plugins/**"/>
 
 </beans>

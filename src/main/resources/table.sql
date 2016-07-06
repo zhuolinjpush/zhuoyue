@@ -32,8 +32,9 @@ create table amazon_sku_reviewer(
 );
 create table zoyare_settings(
     `setid` varchar(32) not null,
+    `page` varchar(32) not null,
     `note` varchar(50) null,
     `content` text null,
     `updatetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    primary key(`setid`)
+    primary key(`setid`, `page`)
 );

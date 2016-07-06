@@ -48,8 +48,15 @@ public class MainController {
         return "contact";
     }
 	
+	// ------------zoyare stats-------------
+	
 	@RequestMapping("/stats")
     public String stats() {
         return "statindex";
+    }
+	
+	@RequestMapping("/stats/zoysetting")
+    public String settingPage() {
+        return "zoysetting";
     }
 }
