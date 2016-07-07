@@ -1,8 +1,11 @@
 package net.zhuoyue.controller;
 
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import net.zhuoyue.dao.IZoyareDao;
+import net.zhuoyue.vo.ZoyareSetting;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,13 +20,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
     
     private static Logger logger = LogManager.getLogger(MainController.class.getName());
+    private static String SUCCESS = "1";
+    private static String FAILD = "0";
     
     @Autowired
     private IZoyareDao zoyDao;
 	
+    //------official website----
+    
 	@RequestMapping("/")
 	public String index(ModelMap model) {
-	    Map<String, String> map = zoyDao.findAllSettingsMap();
+	    logger.info("view index.jsp");
+	    String pageid = "index";
+	    Map<String, String> map = zoyDao.findAllSettingsMap(pageid);
 	    model.addAttribute("index_main_title", map.get("index_main_title"));
         return "index";
 	}
@@ -48,15 +57,44 @@ public class MainController {
         return "contact";
     }
 	
-	// ------------zoyare stats-------------
-	
+	//*************start home page setting*********//
 	@RequestMapping("/stats")
     public String stats() {
         return "statindex";
     }
 	
-	@RequestMapping("/stats/zoysetting")
-    public String settingPage() {
-        return "zoysetting";
+	//home page setting
+	@RequestMapping("/zoyhomepage")
+    public ModelAndView settingPage() {
+	    logger.info("view zoyhomepage");
+	    String pageid = "home";
+	    List<ZoyareSetting> homeList = zoyDao.findAllSettings(pageid);
+	    ModelAndView model = new ModelAndView();
+	    model.addObject("homeList", homeList);
+	    model.setViewName("zoyhomepage");
+        return model;
     }
+	
+	@RequestMapping("/addsetting")
+	public void addSetting(String setid, String pageid, String note, String content, PrintWriter out) {
+	    logger.info(setid + " " + pageid + " " + note + " " + content);
+	    boolean flag = zoyDao.addSetting(new ZoyareSetting(setid, pageid, note, content, ""));
+	    if (flag) {
+	        out.write(SUCCESS);
+	    } else {
+	        out.write(FAILD);
+	    }
+	}
+	
+	//*************end home page setting*********//
+	
+	
+	
+	
+	//modify setting action
+	@RequestMapping("/zoysetaction")
+	public String zoysetaction() {
+	    
+	    return "success";
+	}
 }

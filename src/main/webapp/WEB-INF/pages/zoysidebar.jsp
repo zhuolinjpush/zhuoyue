@@ -22,12 +22,12 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header"><b>Main Navigation</b></li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Official Website</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i>Home Page</a></li>
+            <li><a href="zoyhomepage"><i class="fa fa-circle-o"></i>Home Page</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Company Page</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Product Page</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Contact Page</a></li>

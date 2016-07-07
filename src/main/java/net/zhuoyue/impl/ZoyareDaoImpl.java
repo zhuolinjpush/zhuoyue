@@ -19,26 +19,29 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
     
     private static Logger logger = LogManager.getLogger(ZoyareDaoImpl.class.getName());
     
-    private static String Save_ZoyareSetting_SQL = "insert into zoyare_settings(setid, note, content) values(?,?,?) on duplicate key update note=?, content=?";
-    private static String Query_All_Settings = "select setid, note, content from zoyare_settings";
+    private static String Save_ZoyareSetting_SQL = "insert into zoyare_settings(setid, pageid, note, content) values(?,?,?,?) on duplicate key update note=?, content=?";
+    private static String Query_Settings_Pageid = "select setid, note, content, updatetime from zoyare_settings where pageid='%s' order by updatetime desc";
 
-    public void addSetting(ZoyareSetting zoy) {
+    public boolean addSetting(ZoyareSetting zoy) {
         long start = System.currentTimeMillis();
         try {
             Connection conn = this.getJdbcTemplate().getDataSource().getConnection();
             conn.setAutoCommit(true);
             PreparedStatement pstat = conn.prepareStatement(Save_ZoyareSetting_SQL);
             pstat.setString(1, zoy.getSetid());
-            pstat.setString(2, zoy.getNote());
-            pstat.setString(3, zoy.getContent());
-            pstat.setString(4, zoy.getNote());
-            pstat.setString(5, zoy.getContent());
+            pstat.setString(2, zoy.getPageid());
+            pstat.setString(3, zoy.getNote());
+            pstat.setString(4, zoy.getContent());
+            pstat.setString(5, zoy.getNote());
+            pstat.setString(6, zoy.getContent());
             pstat.execute();
             pstat.close();
         } catch (Exception e) {
             logger.error("save error", e);
+            return false;
         }
         logger.info("addSetting cost time=" + (System.currentTimeMillis() - start));
+        return true;
     }
 
     public void addSetting(List<ZoyareSetting> zList) {
@@ -49,10 +52,11 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
             PreparedStatement pstat = conn.prepareStatement(Save_ZoyareSetting_SQL);
             for (ZoyareSetting zoy : zList) {
                 pstat.setString(1, zoy.getSetid());
-                pstat.setString(2, zoy.getNote());
-                pstat.setString(3, zoy.getContent());
-                pstat.setString(4, zoy.getNote());
-                pstat.setString(5, zoy.getContent());
+                pstat.setString(2, zoy.getPageid());
+                pstat.setString(3, zoy.getNote());
+                pstat.setString(4, zoy.getContent());
+                pstat.setString(5, zoy.getNote());
+                pstat.setString(6, zoy.getContent());
                 pstat.addBatch();
             }
             pstat.executeBatch();
@@ -65,19 +69,20 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
         logger.info("addSetting list " + zList.size() + " cost time=" + (System.currentTimeMillis() - start));
     }
 
-    public List<ZoyareSetting> findAllSettings() {
+    public List<ZoyareSetting> findAllSettings(String pageid) {
         List<ZoyareSetting> data = new ArrayList<ZoyareSetting>();
         long start = System.currentTimeMillis();
         try {
             Connection conn = this.getJdbcTemplate().getDataSource().getConnection();
-            PreparedStatement pstat = conn.prepareStatement(Query_All_Settings);
+            PreparedStatement pstat = conn.prepareStatement(String.format(Query_Settings_Pageid, pageid));
             ResultSet rs = pstat.executeQuery();
             ZoyareSetting zoy = null;
             while (rs.next()) {
                 String setid = rs.getString("setid");
                 String note = rs.getString("note");
                 String content = rs.getString("content");
-                zoy = new ZoyareSetting(setid, note, content);
+                String updatetime = rs.getString("updatetime");
+                zoy = new ZoyareSetting(setid, pageid, note, content, updatetime);
                 data.add(zoy);
             }
             rs.close();
@@ -89,12 +94,12 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
         return data;
     }
 
-    public Map<String, String> findAllSettingsMap() {
+    public Map<String, String> findAllSettingsMap(String pageid) {
         Map<String, String> data = new HashMap<String, String>();
         long start = System.currentTimeMillis();
         try {
             Connection conn = this.getJdbcTemplate().getDataSource().getConnection();
-            PreparedStatement pstat = conn.prepareStatement(Query_All_Settings);
+            PreparedStatement pstat = conn.prepareStatement(String.format(Query_Settings_Pageid, pageid));
             ResultSet rs = pstat.executeQuery();
             while (rs.next()) {
                 String setid = rs.getString("setid");

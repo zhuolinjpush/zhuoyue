@@ -3,13 +3,18 @@ package net.zhuoyue.vo;
 public class ZoyareSetting {
     
     private String setid;
+    private String pageid;
     private String note;
     private String content;
+    private String updatetime;
     
-    public ZoyareSetting(String setid, String note, String content) {
+    public ZoyareSetting(String setid, String pageid, String note,
+            String content, String updatetime) {
         this.setid = setid;
+        this.pageid = pageid;
         this.note = note;
         this.content = content;
+        this.updatetime = updatetime;
     }
 
     public String getSetid() {
@@ -18,6 +23,14 @@ public class ZoyareSetting {
 
     public void setSetid(String setid) {
         this.setid = setid;
+    }
+
+    public String getPageid() {
+        return pageid;
+    }
+
+    public void setPageid(String pageid) {
+        this.pageid = pageid;
     }
 
     public String getNote() {
@@ -35,7 +48,14 @@ public class ZoyareSetting {
     public void setContent(String content) {
         this.content = content;
     }
-    
-    
 
+    public String getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(String updatetime) {
+        this.updatetime = updatetime;
+    }
+    
+    
 }

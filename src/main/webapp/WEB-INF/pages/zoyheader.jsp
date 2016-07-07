@@ -39,7 +39,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="stats" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>Z</b></span>
       <!-- logo for regular state and mobile devices -->

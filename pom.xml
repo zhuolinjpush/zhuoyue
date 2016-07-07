@@ -28,6 +28,7 @@
     <maven.version>2.3.2</maven.version>
     <dbcp.version>1.4</dbcp.version>
     <servlet.version>3.1.0</servlet.version>
+    <jstl.version>1.2</jstl.version>
   </properties>
 
   <dependencies>
@@ -82,6 +83,11 @@
         <artifactId>javax.servlet-api</artifactId>
         <version>${servlet.version}</version>
     </dependency>
+    <dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>jstl</artifactId>
+	  <version>${jstl.version}</version>
+	</dependency>
     <dependency>
 	    <groupId>com.mchange</groupId>
 	    <artifactId>mchange-commons-java</artifactId>
