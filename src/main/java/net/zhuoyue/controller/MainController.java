@@ -15,6 +15,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 @Controller
 @RequestMapping("/")
 public class MainController {
@@ -67,13 +70,32 @@ public class MainController {
 	@RequestMapping("/zoyhomepage")
     public ModelAndView settingPage() {
 	    logger.info("view zoyhomepage");
-	    String pageid = "home";
-	    List<ZoyareSetting> homeList = zoyDao.findAllSettings(pageid);
 	    ModelAndView model = new ModelAndView();
-	    model.addObject("homeList", homeList);
 	    model.setViewName("zoyhomepage");
         return model;
     }
+	
+	@RequestMapping("/getjsondata")
+	public String getJsonData(String params) {
+	    String data = "{}";
+	    try {
+	        logger.info("get json params:" + params);
+	        if ("home".equals(params)) {
+	            JSONArray array = new JSONArray();
+	            JSONObject object = new JSONObject();
+	            List<ZoyareSetting> homeList = zoyDao.findAllSettings("home");
+	            for (ZoyareSetting zoy : homeList) {
+	                array.add(zoy);
+	            }
+	            object.put("data", array);
+	            data = object.toJSONString();
+	        }
+	        logger.info("data:" + data);
+	    } catch (Exception e) {
+	        logger.error("get json data error", e);
+	    }
+	    return data;
+	}
 	
 	@RequestMapping("/addsetting")
 	public void addSetting(String setid, String pageid, String note, String content, PrintWriter out) {

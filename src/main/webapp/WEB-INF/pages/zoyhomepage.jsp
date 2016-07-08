@@ -45,25 +45,21 @@
                   <thead>
                   <tr>
                     <th>Setting ID</th>
+                    <th>Page ID</th>
                     <th>Short Info</th>
                     <th>Content</th>
                     <th>Modified Time</th>
-                    <th>Operation</th>
                   </tr>
                   </thead>
-                  <tbody>
-                  <c:forEach var="sinfo" items="${homeList}">
-                      <tr>
-                          <td>${sinfo.setid}</td>
-                          <td>${sinfo.note}</td>
-                          <td>${sinfo.content}</td>
-                          <td>${sinfo.updatetime}</td>
-                          <td><button type="button" class="btn btn-success">update</button>
-                              <button type="button" class="btn btn-danger">delete</button>
-                          </td>
-                      </tr>
-                  </c:forEach>
-                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Setting ID</th>
+                    <th>Page ID</th>
+                    <th>Short Info</th>
+                    <th>Content</th>
+                    <th>Modified Time</th>
+                  </tr>
+                  </tfoot>
 
                 </table>
             </div>
@@ -88,17 +84,8 @@
                      Add Setting Dialog
                   </h4>
                </div>
-               <div class="alert alert-warning alert-dismissible fade" id="addalertwarning">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-warning"></i> Alert!</h4>
-                 Save Error!
-              </div>
-              <div class="alert alert-success alert-dismissible fade" id="addalertsuccess">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                 Save Success!
-              </div>
                <div class="modal-body">
+                <p class="bg-success" id="addresponsetext"></p>
                   <form id="addform">  
                     <div class="form-group">
                       <label for="addsettingid" class="form-control-label">Setting ID:</label>
@@ -140,12 +127,28 @@
 
 <script>
 $(function () {
-    $("#homelisttable").DataTable();
-    $("#addalertwarning").alert('close');
-    $("#addalertsuccess").alert('close');
+    $("#homelisttable").DataTable({
+      "processing": true,
+      "serverSide": true,
+      "ajax":{
+        "url":"getjsondata",
+        "type": "POST",
+        "dataType":"text",
+        "data":{
+          "params":"home"
+        }
+      },
+      "columns": [
+            { "data": "setid"},
+            { "data": "pageid"},
+            { "data": "note"},
+            { "data": "content"},
+            { "data": "updatetime"}
+        ]
+    });
+    $("#addresponsetext").hide();
     $("#addsubmitbtn").click(function(){
-      $("#addalertwarning").alert('close');
-      $("#addalertsuccess").alert('close');
+      $("#addresponsetext").hide();
       $.ajax({
         url:"addsetting",
         type:"post",
@@ -158,13 +161,17 @@ $(function () {
         },
         success:function(responseText){
           if (responseText=="1") {
-            $("#addalertsuccess").fadeIn();
+            $("#addresponsetext").html("Save Success!");
+            $("#addresponsetext").show();    
+            $("#homelisttable").DataTable();     
           } else {
-            $("#addalertwarning").fadeIn();
+            $("#addresponsetext").html("Save Error!");
+            $("#addresponsetext").show();   
           }
         },
         error:function(){
-          $("#addalertwarning").fadeIn();
+          $("#addresponsetext").html("Save Error!");
+          $("#addresponsetext").show();  
         }
       });
     });

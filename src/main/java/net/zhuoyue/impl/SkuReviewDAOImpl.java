@@ -48,6 +48,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             pstat.setInt(7, sku.getReviewscount());
             pstat.execute();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -73,6 +74,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             pstat.executeBatch();
             conn.commit();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -107,6 +109,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             conn.commit();
             pstat.close();
             conn.setAutoCommit(true);
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -137,6 +140,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             conn.commit();
             pstat.close();
             conn.setAutoCommit(true);
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -166,6 +170,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             conn.commit();
             updatePstat.close();
             conn.setAutoCommit(true);
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -191,6 +196,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             }
             rs.close();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -220,6 +226,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             }
             rs.close();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -247,6 +254,7 @@ public class SkuReviewDAOImpl extends JdbcDaoSupport implements ISkuReviewDao {
             }
             rs.close();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }

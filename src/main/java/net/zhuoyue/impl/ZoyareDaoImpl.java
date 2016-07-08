@@ -36,6 +36,7 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
             pstat.setString(6, zoy.getContent());
             pstat.execute();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
             return false;
@@ -63,6 +64,7 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
             conn.commit();
             pstat.close();
             conn.setAutoCommit(true);
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -87,6 +89,7 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
             }
             rs.close();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
@@ -108,6 +111,7 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
             }
             rs.close();
             pstat.close();
+            conn.close();
         } catch (Exception e) {
             logger.error("save error", e);
         }
