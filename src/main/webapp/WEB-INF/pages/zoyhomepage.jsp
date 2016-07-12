@@ -44,23 +44,29 @@
                 <table id="homelisttable" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Setting ID</th>
-                    <th>Page ID</th>
-                    <th>Short Info</th>
-                    <th>Content</th>
-                    <th>Modified Time</th>
+                    <th>setid</th>
+                    <th>pageid</th>
+                    <th>note</th>
+                    <th>content</th>
+                    <th>updatetime</th>
+                    <th>operation</th>
                   </tr>
                   </thead>
-                  <tfoot>
-                  <tr>
-                    <th>Setting ID</th>
-                    <th>Page ID</th>
-                    <th>Short Info</th>
-                    <th>Content</th>
-                    <th>Modified Time</th>
-                  </tr>
-                  </tfoot>
-
+                  <tbody>
+                    <c:if test="${not empty homeList}">
+                      <c:forEach var="list" items="${homeList}">
+                        <tr>
+                          <td>${list.setid}</td>
+                          <td>${list.pageid}</td>
+                          <td>${list.note}</td>
+                          <td>${list.content}</td>
+                          <td>${list.updatetime}</td>
+                          <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#addmodal" onclick="modifyset('${list.setid}','${list.pageid}','${list.note}','${list.content}')">modify</button>
+                          <button type="button" class="btn btn-default" onclick="delset('${list.setid}','${list.pageid}');" >delete</button></td>
+                        </tr>
+                      </c:forEach>
+                    </c:if>
+                  </tbody>
                 </table>
             </div>
             <!-- /.box-body -->
@@ -81,25 +87,25 @@
                         &times;
                   </button>
                   <h4 class="modal-title" id="myModalLabel">
-                     Add Setting Dialog
+                     Setting Dialog
                   </h4>
                </div>
                <div class="modal-body">
                 <p class="bg-success" id="addresponsetext"></p>
-                  <form id="addform">  
-                    <div class="form-group">
-                      <label for="addsettingid" class="form-control-label">Setting ID:</label>
-                      <input type="text" class="form-control" id="addsettingid">
-                    </div>
-                    <div class="form-group">
-                      <lable for="addshortinfo" class="form-control-label">Short Info:</label>
-                      <input type="text" class="form-control" id="addshortinfo">
-                    </div>
-                    <div class="form-group">
-                      <lable for="addcontent" class="form-control-label">Content:</label>
-                      <input type="text" class="form-control" id="addcontent">
-                    </div>
-                  </form>
+                <form id="addform">  
+                  <div class="form-group">
+                    <label for="addsettingid" class="form-control-label">Setting ID:</label>
+                    <input type="text" class="form-control" id="addsettingid">
+                  </div>
+                  <div class="form-group">
+                    <lable for="addshortinfo" class="form-control-label">Short Info:</label>
+                    <input type="text" class="form-control" id="addshortinfo">
+                  </div>
+                  <div class="form-group">
+                    <lable for="addcontent" class="form-control-label">Content:</label>
+                    <input type="text" class="form-control" id="addcontent">
+                  </div>
+                </form>
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -107,7 +113,6 @@
                </div>
             </div><!-- /.modal-content -->
       </div><!-- /.modal -->
-
 
     </section>
     <!-- /.content -->
@@ -127,25 +132,7 @@
 
 <script>
 $(function () {
-    $("#homelisttable").DataTable({
-      "processing": true,
-      "serverSide": true,
-      "ajax":{
-        "url":"getjsondata",
-        "type": "POST",
-        "dataType":"text",
-        "data":{
-          "params":"home"
-        }
-      },
-      "columns": [
-            { "data": "setid"},
-            { "data": "pageid"},
-            { "data": "note"},
-            { "data": "content"},
-            { "data": "updatetime"}
-        ]
-    });
+    var homelistTable = $("#homelisttable").DataTable();
     $("#addresponsetext").hide();
     $("#addsubmitbtn").click(function(){
       $("#addresponsetext").hide();
@@ -155,15 +142,14 @@ $(function () {
         dataType:"text",
         data:{
           setid:$("#addsettingid").val(),
-          pageid:"home",
+          pageid:"index",
           note:$("#addshortinfo").val(),
           content:$("#addcontent").val()
         },
         success:function(responseText){
           if (responseText=="1") {
             $("#addresponsetext").html("Save Success!");
-            $("#addresponsetext").show();    
-            $("#homelisttable").DataTable();     
+            $("#addresponsetext").show();     
           } else {
             $("#addresponsetext").html("Save Error!");
             $("#addresponsetext").show();   
@@ -175,9 +161,40 @@ $(function () {
         }
       });
     });
+    
   });
   $.widget.bridge('uibutton', $.ui.button);
-  
+
+  function modifyset(setid, pageid, note, content){
+    $("#addsettingid").val(setid);
+    $("#addshortinfo").val(note);
+    $("#addcontent").val(content);
+    $("#addsettingid").attr("readonly", "readonly");
+  };
+
+  function delset(setid, pageid){
+    alert(idbtn);
+    $("#addresponsetext").hide();
+      $.ajax({
+        url:"delsetting",
+        type:"post",
+        dataType:"text",
+        data:{
+          "setid":setid,
+          "pageid":pageid
+        },
+        success:function(responseText){
+          if (responseText=="1") {
+            alert("Del success");
+          } else {
+            alert("Del Error!");
+          }
+        },
+        error:function(){
+          alert("Del Error!");
+        }
+      });
+  };
 </script>
 </body>
 </html>

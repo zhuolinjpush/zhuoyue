@@ -36,7 +36,9 @@ public class MainController {
 	    logger.info("view index.jsp");
 	    String pageid = "index";
 	    Map<String, String> map = zoyDao.findAllSettingsMap(pageid);
-	    model.addAttribute("index_main_title", map.get("index_main_title"));
+	    for (String key : map.keySet()) {
+	        model.addAttribute(key, map.get(key));
+	    }
         return "index";
 	}
 	
@@ -70,31 +72,34 @@ public class MainController {
 	@RequestMapping("/zoyhomepage")
     public ModelAndView settingPage() {
 	    logger.info("view zoyhomepage");
+	    List<ZoyareSetting> homeList = zoyDao.findAllSettings("index");
 	    ModelAndView model = new ModelAndView();
+	    model.addObject("homeList", homeList);
 	    model.setViewName("zoyhomepage");
         return model;
     }
 	
-	@RequestMapping("/getjsondata")
-	public String getJsonData(String params) {
-	    String data = "{}";
+	@RequestMapping(value="/getjsondata")
+	public void getJsonData(String params, PrintWriter out) {
+	    String data = "{data:[]}";
 	    try {
 	        logger.info("get json params:" + params);
-	        if ("home".equals(params)) {
+	        if (null != params && !"".equals(params)) {
 	            JSONArray array = new JSONArray();
 	            JSONObject object = new JSONObject();
-	            List<ZoyareSetting> homeList = zoyDao.findAllSettings("home");
+	            List<ZoyareSetting> homeList = zoyDao.findAllSettings(params);
 	            for (ZoyareSetting zoy : homeList) {
 	                array.add(zoy);
 	            }
 	            object.put("data", array);
 	            data = object.toJSONString();
+
 	        }
 	        logger.info("data:" + data);
+	        out.write(data);
 	    } catch (Exception e) {
 	        logger.error("get json data error", e);
 	    }
-	    return data;
 	}
 	
 	@RequestMapping("/addsetting")
@@ -106,6 +111,17 @@ public class MainController {
 	    } else {
 	        out.write(FAILD);
 	    }
+	}
+	
+	@RequestMapping("/delsetting")
+	public void delSetting(String setid, String pageid, PrintWriter out) {
+	    logger.info(setid + " " + pageid);
+	    boolean flag = zoyDao.delSetting(new ZoyareSetting(setid, pageid, "", "", ""));
+	    if (flag) {
+            out.write(SUCCESS);
+        } else {
+            out.write(FAILD);
+        }
 	}
 	
 	//*************end home page setting*********//

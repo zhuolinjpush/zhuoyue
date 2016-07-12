@@ -9,7 +9,7 @@ public interface IZoyareDao {
 
     public boolean addSetting(ZoyareSetting zoy);
     public void addSetting(List<ZoyareSetting> zList);
-    
+    public boolean delSetting(ZoyareSetting zoy);
     public Map<String, String> findAllSettingsMap(String pageid);
     public List<ZoyareSetting> findAllSettings(String pageid);
 }

@@ -91,7 +91,7 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div class="fh5co-hero-wrap">
 						<div class="fh5co-hero-intro">
-							<h1 class="to-animate hero-animate-1">${index_main_title}</h1>
+							<h1 class="to-animate hero-animate-1">${home_title_one}</h1>
 							<h2 class="to-animate hero-animate-2">标题2</h2>
 							<p class="to-animate hero-animate-3"><a href="#" class="btn btn-outline btn-lg">这里可以加个按钮</a></p>
 						</div>

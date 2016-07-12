@@ -21,6 +21,7 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
     
     private static String Save_ZoyareSetting_SQL = "insert into zoyare_settings(setid, pageid, note, content) values(?,?,?,?) on duplicate key update note=?, content=?";
     private static String Query_Settings_Pageid = "select setid, note, content, updatetime from zoyare_settings where pageid='%s' order by updatetime desc";
+    private static String Delete_Settings_SQL = "delete from zoyare_settings where setid='%s' and pageid='%s'";
 
     public boolean addSetting(ZoyareSetting zoy) {
         long start = System.currentTimeMillis();
@@ -70,7 +71,24 @@ public class ZoyareDaoImpl extends JdbcDaoSupport implements IZoyareDao {
         }
         logger.info("addSetting list " + zList.size() + " cost time=" + (System.currentTimeMillis() - start));
     }
-
+    
+    public boolean delSetting(ZoyareSetting zoy) {
+        long start = System.currentTimeMillis();
+        try {
+            Connection conn = this.getJdbcTemplate().getDataSource().getConnection();
+            conn.setAutoCommit(true);
+            PreparedStatement pstat = conn.prepareStatement(String.format(Delete_Settings_SQL, zoy.getSetid(), zoy.getPageid()));
+            pstat.execute();
+            pstat.close();
+            conn.close();
+        } catch (Exception e) {
+            logger.error("save error", e);
+            return false;
+        }
+        logger.info("delSetting cost time=" + (System.currentTimeMillis() - start));
+        return true;
+    }
+    
     public List<ZoyareSetting> findAllSettings(String pageid) {
         List<ZoyareSetting> data = new ArrayList<ZoyareSetting>();
         long start = System.currentTimeMillis();
